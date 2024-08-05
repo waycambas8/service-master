@@ -1,0 +1,21 @@
+version: "3.1"
+
+services:
+  app-supervisord:
+    container_name: ${APP_SERVICE}
+    build:
+      dockerfile: Dockerfile
+    image: ${APP_IMAGES}
+    env_file:
+      - .docker/.env.docker
+    ports:
+      - "80:80"
+      - "443:443"
+      - "9000:9000"
+    networks:
+      - satellite-core
+    volumes:
+      - ./:/usr/share/app
+
+networks:
+  satellite-core: {}
