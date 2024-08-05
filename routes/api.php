@@ -18,7 +18,7 @@ Route::group([
 ], function () {
     Route::get('', function () {
         return response()->json([
-            'msg' => "Beep Beep Service master is online"
+            'msg' => "Beep Beep Service masters is online"
         ]);
     });
 });
