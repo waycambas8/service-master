@@ -25,6 +25,9 @@ pipeline {
                 sshagent(['ssh-app']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no ec2-user@13.250.52.15 "
+                            if [ ! -d ${directory} ]; then
+                                git clone ${gitUrl} ${directory}
+                            fi
                             cd ${directory} && git pull origin main
                             docker-compose -f development-compose.yml --env-file .docker/.env.docker up --build
                         "
