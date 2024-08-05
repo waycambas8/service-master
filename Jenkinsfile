@@ -29,7 +29,7 @@ pipeline {
                                 git clone ${gitUrl} ${directory}
                             fi
                             cd ${directory} && git pull origin main
-                            docker-compose -f development-compose.yml --env-file .docker/.env.docker up --build
+                            docker-compose -f development-compose.yml --env-file .docker/.env.docker up -d --build
                         "
                     """
                 }
