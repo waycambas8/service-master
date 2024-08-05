@@ -52,7 +52,7 @@ COPY .docker/etc/nginx/servers/app.conf /etc/nginx/servers/default.conf
 
 COPY . /usr/share/app
 COPY .docker/app /app
-RUN chmod +rx /app/run.sh
+RUN chmod -R +rx /app
 
 COPY .docker/etc/supervisord /etc/supervisord.d/
 
