@@ -32,7 +32,7 @@ pipeline {
 
                             git fetch --tags
                             TAG=\$(git describe --tags --abbrev=0)
-                            echo \"\$TAG\"
+                            echo \"Latest tag: \$TAG\"
 
                             docker-compose -f development-compose.yml --env-file .docker/.env.docker up -d --build
                         "
