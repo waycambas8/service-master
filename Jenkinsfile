@@ -29,6 +29,11 @@ pipeline {
                                 git clone ${gitUrl} ${directory}
                             fi
                             cd ${directory} && git pull origin main
+
+                            git fetch --tags
+                            TAGS=\$(git tag)
+                            echo \"\$TAGS\"
+
                             docker-compose -f development-compose.yml --env-file .docker/.env.docker up -d --build
                         "
                     """
