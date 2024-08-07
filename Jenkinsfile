@@ -31,8 +31,8 @@ pipeline {
                             cd ${directory} && git pull origin main
 
                             git fetch --tags
-                            TAGS=\$(git tag)
-                            echo \"\$TAGS\"
+                            RELEASE_TAG=\$(git describe --tags --abbrev=0)
+                            echo \"Current release tag: \$RELEASE_TAG\"
 
                             docker-compose -f development-compose.yml --env-file .docker/.env.docker up -d --build
                         "
